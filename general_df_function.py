@@ -38,6 +38,8 @@ df.count()
 
 # select
 df.select("name","age").show()
+df.select(df["name"].alias("user name")).show()
+df.select(df.id).show()
 
 df.filter(df["age"] == 30).show()
 df.filter((df["age"] == 30) & (df["name"] == "Arun")).show()
