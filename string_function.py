@@ -15,23 +15,37 @@ data = [
 
 df = spark.createDataFrame(data,["id","name","city","country","age", "email"])
 
+print("upper case")
 df.select(upper(col("name"))).show()
+
+print("lower case")
 df.select(lower(col("country"))).show()
 
+print("init cap case")
+df.select(initcap(col("email"))).show() #first letter of word cap
+
+print("length")
 df.select(length(col("name"))).show()
 
+print("trim")
 df.select(trim("name")).show()
+
+print("left trim")
 df.select(ltrim("name")).show()
+
+print("right trim")
 df.select(rtrim(col("name"))).show()
 
+print("substring (position, length)")
 df.select(substring(col("name"), 1, 3)).show()  # First 3 characters
 
-df.select(initcap(col("name"))).show()
-
+print("substring index")
 df.select(substring_index(col("email"), "@", 1)).show()  # username part
 
+print("split")
 df.select(split(col("email"), "@")).show()
 
+print("repeat (no.of times)")
 df.select(repeat(col("name"), 2)).show()
 
 df.select(rpad(col("name"), 10, "*")).show()
